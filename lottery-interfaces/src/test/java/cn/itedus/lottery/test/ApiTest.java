@@ -30,7 +30,7 @@ public class ApiTest {
     @Test
     public void test_insert() {
         Activity activity = new Activity();
-        activity.setActivityId(100009L);
+        activity.setActivityId(100011L);
         activity.setActivityName("测试活动");
         activity.setActivityDesc("仅用于插入数据测试");
         activity.setBeginDateTime(new Date());
@@ -38,13 +38,13 @@ public class ApiTest {
         activity.setStockCount(100);
         activity.setTakeCount(10);
         activity.setState(0);
-        activity.setCreator("xiaofuge");
+        activity.setCreator("lpc");
         activityDao.insert(activity);
     }
 
     @Test
     public void test_select() {
-        Activity activity = activityDao.queryActivityById(100001L);
+        Activity activity = activityDao.queryActivityById(100010L);
         logger.info("测试结果：{}", JSON.toJSONString(activity));
     }
 
