@@ -1,18 +1,14 @@
-package cn.itedus.lottery.infrastructure.po;
+package cn.itedus.lottery.rpc.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 活动基础信息表
- * <p>
  * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
  */
-public class Activity {
-
-    // 自增ID
-    private Long id;
+public class ActivityDto implements Serializable {
 
     // 活动ID
     private Long activityId;
@@ -37,23 +33,6 @@ public class Activity {
 
     // 活动状态：编辑、提审、撤审、通过、运行、拒绝、关闭、开启
     private Integer state;
-
-    // 创建人
-    private String creator;
-
-    // 创建时间
-    private Date createTime;
-
-    // 修改时间
-    private Date updateTime;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getActivityId() {
         return activityId;
@@ -117,29 +96,5 @@ public class Activity {
 
     public void setState(Integer state) {
         this.state = state;
-    }
-
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 }

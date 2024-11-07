@@ -12,8 +12,16 @@ import org.apache.dubbo.config.annotation.Service;
 
 import javax.annotation.Resource;
 
+/**
+ * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 公众号：bugstack虫洞栈
+ * Create by 小傅哥(fustack)
+ * <p>
+ * 活动展台
+ */
 @Service
-public class ActivityBooth implements IActivityBooth{
+public class ActivityBooth implements IActivityBooth {
+
     @Resource
     private IActivityDao activityDao;
 
