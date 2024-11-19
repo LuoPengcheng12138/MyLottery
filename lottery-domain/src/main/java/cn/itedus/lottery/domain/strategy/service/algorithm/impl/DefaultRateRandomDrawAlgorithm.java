@@ -29,8 +29,8 @@ public class DefaultRateRandomDrawAlgorithm extends BaseAlgorithm {
             differenceDenominator=differenceDenominator.add(awardRateInfo.getAwardRate());
         }
         //前置判断：如果没有可抽奖品，直接返回空字符串;如果只有一个可抽奖品，直接返回该奖品ID
-        if(differenceAwardRateList.size()==0) return "";
-        if(differenceAwardRateList.size()==1) return differenceAwardRateList.get(0).getAwardId();
+        if(differenceAwardRateList.size()==0) {return "";}
+        if(differenceAwardRateList.size()==1) {return differenceAwardRateList.get(0).getAwardId();}
 
         SecureRandom secureRandom=new SecureRandom();
         int randomVal=secureRandom.nextInt(100)+1;
