@@ -2,10 +2,11 @@ package cn.itedus.lottery.infrastructure.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
@@ -19,8 +20,11 @@ public class StrategyDetail {
     // 奖品ID
     private String awardId;
 
-    // 奖品数量
+    // 奖品库存
     private String awardCount;
+
+    //奖品剩余库存
+    private Integer awardSurplusCount;
 
     // 中奖概率
     private BigDecimal awardRate;

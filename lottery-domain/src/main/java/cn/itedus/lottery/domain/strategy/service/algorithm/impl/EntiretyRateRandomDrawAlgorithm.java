@@ -9,8 +9,11 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Luopc
+ */
 @Component("defaultRateRandomDrawAlgorithm")
-public class DefaultRateRandomDrawAlgorithm extends BaseAlgorithm {
+public class EntiretyRateRandomDrawAlgorithm extends BaseAlgorithm {
     @Override
     public String randomDraw(Long strategyId, List<String> excludeAwardIds){
         // 用于存储不在抽奖范围内的奖品的总概率值
@@ -32,11 +35,10 @@ public class DefaultRateRandomDrawAlgorithm extends BaseAlgorithm {
         if(differenceAwardRateList.size()==0) {return "";}
         if(differenceAwardRateList.size()==1) {return differenceAwardRateList.get(0).getAwardId();}
 
-        SecureRandom secureRandom=new SecureRandom();
-        int randomVal=secureRandom.nextInt(100)+1;
+        int randomVal=this.generateSecureRandomIntCode(100);
 
         //循环获取奖品
-        String awardId="";
+        String awardId=null;
         int cursorVal=0;
         for(AwardRateInfo awardRateInfo:differenceAwardRateList){
             int rateVal=awardRateInfo.getAwardRate().divide(differenceDenominator,2,BigDecimal.ROUND_UP).multiply(new BigDecimal(100)).intValue();

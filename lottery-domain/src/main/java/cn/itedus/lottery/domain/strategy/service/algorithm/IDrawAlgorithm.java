@@ -13,5 +13,6 @@ public interface IDrawAlgorithm {
     //判断是否已经，做了数据初始化
     boolean isExistRateTuple(Long StrategyId);
 
+    //生成随机数，索引到对应的奖品信息返回结果
     String randomDraw(Long strategyId,List<String> excludeAwardIds);
 }

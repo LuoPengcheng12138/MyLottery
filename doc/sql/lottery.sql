@@ -75,26 +75,60 @@ BEGIN;
 INSERT INTO `strategy` VALUES (1, 10001, 'test', 2, 1, NULL, '', '2021-09-25 08:15:52', '2021-09-25 08:15:52');
 COMMIT;
 
--- auto-generated definition
-create table strategy_detail
-(
-    id         bigint(11) auto_increment comment '自增ID'
-        primary key,
-    strategyId bigint(11)    not null comment '策略ID',
-    awardId    bigint(11)    null comment '奖品ID',
-    awardCount int           null comment '奖品数量',
-    awardRate  decimal(5, 2) null comment '中奖概率',
-    createTime datetime      null comment '创建时间',
-    updateTime datetime      null comment '修改时间'
-)
-    comment '策略明细';
 
-INSERT INTO `strategy_detail` (`id`, `strategyId`, `awardId`,  `awardCount`,  `awardRate`, `createTime`, `updateTime`)
-VALUES
-    (1,10001,'1',10,0.05,'2021-08-15 15:38:05','2021-08-15 15:38:05'),
-    (2,10001,'2',20,0.15,'2021-08-15 15:38:05','2021-08-15 15:38:05'),
-    (3,10001,'3',50,0.20,'2021-08-15 15:38:05','2021-08-15 15:38:05'),
-    (4,10001,'4',100,0.25,'2021-08-15 15:38:05','2021-08-15 15:38:05'),
-    (5,10001,'5',500,0.35,'2021-08-15 15:38:05','2021-08-15 15:38:05');
+
+-- ----------------------------
+-- Table structure for strategy_detail
+-- ----------------------------
+DROP TABLE IF EXISTS `strategy_detail`;
+CREATE TABLE `strategy_detail` (
+                                   `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+                                   `strategyId` bigint(11) NOT NULL COMMENT '策略ID',
+                                   `awardId` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '奖品ID',
+                                   `awardDesc` varchar(128) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '奖品描述',
+                                   `awardCount` int(11) DEFAULT NULL COMMENT '奖品库存',
+                                   `awardSurplusCount` int(11) DEFAULT '0' COMMENT '奖品剩余库存',
+                                   `awardRate` decimal(5,2) DEFAULT NULL COMMENT '中奖概率',
+                                   `createTime` datetime DEFAULT NULL COMMENT '创建时间',
+                                   `updateTime` datetime DEFAULT NULL COMMENT '修改时间',
+                                   PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='策略明细';
+
+-- ----------------------------
+-- Records of strategy_detail
+-- ----------------------------
+BEGIN;
+INSERT INTO `strategy_detail` VALUES (1, 10001, '1', NULL, 10, 0, 0.05, '2021-08-15 15:38:05', '2021-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (2, 10001, '2', NULL, 20, 19, 0.15, '2021-08-15 15:38:05', '2021-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (3, 10001, '3', NULL, 50, 43, 0.20, '2021-08-15 15:38:05', '2021-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (4, 10001, '4', NULL, 100, 70, 0.25, '2021-08-15 15:38:05', '2021-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (5, 10001, '5', NULL, 500, 388, 0.35, '2021-08-15 15:38:05', '2021-08-15 15:38:05');
+COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+
+-- auto-generated definition
+-- create table strategy_detail
+-- (
+--     id         bigint(11) auto_increment comment '自增ID'
+--         primary key,
+--     strategyId bigint(11)    not null comment '策略ID',
+--     awardId    bigint(11)    null comment '奖品ID',
+--     awardCount int           null comment '奖品数量',
+--     awardRate  decimal(5, 2) null comment '中奖概率',
+--     createTime datetime      null comment '创建时间',
+--     updateTime datetime      null comment '修改时间'
+-- )
+--     comment '策略明细';
+--
+-- INSERT INTO `strategy_detail` (`id`, `strategyId`, `awardId`,  `awardCount`,  `awardRate`, `createTime`, `updateTime`)
+-- VALUES
+--     (1,10001,'1',10,0.05,'2021-08-15 15:38:05','2021-08-15 15:38:05'),
+--     (2,10001,'2',20,0.15,'2021-08-15 15:38:05','2021-08-15 15:38:05'),
+--     (3,10001,'3',50,0.20,'2021-08-15 15:38:05','2021-08-15 15:38:05'),
+--     (4,10001,'4',100,0.25,'2021-08-15 15:38:05','2021-08-15 15:38:05'),
+--     (5,10001,'5',500,0.35,'2021-08-15 15:38:05','2021-08-15 15:38:05');
+--
+-- SET FOREIGN_KEY_CHECKS = 1;

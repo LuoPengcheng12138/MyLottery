@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 import java.security.SecureRandom;
 import java.util.List;
 
+/**
+ * @author Luopc
+ */
 @Component("singleRateRandomDrawAlgorithm")
 public class SingleRateRandomDrawAlgorithm extends BaseAlgorithm {
     @Override
@@ -13,13 +16,17 @@ public class SingleRateRandomDrawAlgorithm extends BaseAlgorithm {
         // 获取策略对应的元祖
         String[] rateTuple=super.rateTupleMap.get(strategyId);
         assert rateTuple!=null;
+
         // 随机索引
         int randomVal=new SecureRandom().nextInt(100)+1;
         int idx=super.hashIdx(randomVal);
+
         //返回结果
         String awardId=rateTuple[idx];
+
+        // 如果中奖ID命中排除奖品列表，则返回NULL
         if(excludeAwardIds.contains(awardId)){
-            return "未中奖";
+            return null;
         }
         return awardId;
 
