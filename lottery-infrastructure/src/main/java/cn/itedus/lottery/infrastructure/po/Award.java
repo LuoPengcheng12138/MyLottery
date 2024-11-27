@@ -2,6 +2,7 @@ package cn.itedus.lottery.infrastructure.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 public class Award {
     //自增id
     private Long id;
@@ -27,6 +29,7 @@ public class Award {
 
     //奖品内容（文字描述/key/码）
     private String awardContent;
+
     //创建时间
     private Date createTime;
 

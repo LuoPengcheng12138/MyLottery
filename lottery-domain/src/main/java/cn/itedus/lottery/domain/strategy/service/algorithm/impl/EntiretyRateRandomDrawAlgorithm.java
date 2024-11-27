@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @author Luopc
  */
-@Component("defaultRateRandomDrawAlgorithm")
+@Component("entiretyRateRandomDrawAlgorithm")
 public class EntiretyRateRandomDrawAlgorithm extends BaseAlgorithm {
     @Override
     public String randomDraw(Long strategyId, List<String> excludeAwardIds){

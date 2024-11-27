@@ -2,6 +2,7 @@ package cn.itedus.lottery.infrastructure.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 public class Strategy {
     // 自增ID
     private Long id;
