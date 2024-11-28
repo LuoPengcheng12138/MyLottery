@@ -16,3 +16,6 @@ Cause: java.sql.SQLDataException: Cannot determine value type from string 'AirPo
 @Getter
 @Setter
 https://blog.csdn.net/m0_37822085/article/details/125894706
+
+Error：显示找不到bean
+原因：Goods 没有使用 @Component 注解注册到 bean 中
