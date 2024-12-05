@@ -1,7 +1,6 @@
 package cn.itedus.lottery.domain.award.service.goods;
 
 import cn.itedus.lottery.domain.award.repository.IAwardRepository;
-import cn.itedus.lottery.infrastructure.po.Award;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

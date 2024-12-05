@@ -39,10 +39,10 @@ public class SpringRunnerTest {
 
     @Test
     public void test_drawExec() {
-        drawExec.doDrawExec(new DrawReq("小傅哥", 10001L));
-        drawExec.doDrawExec(new DrawReq("小佳佳", 10001L));
-        drawExec.doDrawExec(new DrawReq("小蜗牛", 10001L));
-        drawExec.doDrawExec(new DrawReq("八杯水", 10001L));
+        drawExec.doDrawExec(new DrawReq("小傅哥", 10002L));
+        drawExec.doDrawExec(new DrawReq("小佳佳", 10002L));
+        drawExec.doDrawExec(new DrawReq("小蜗牛", 10002L));
+        drawExec.doDrawExec(new DrawReq("八杯水", 10002L));
     }
 
     @Test

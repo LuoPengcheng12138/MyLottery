@@ -1,6 +1,10 @@
-package cn.itedus.lottery.domain.strategy.repository.impl;
+package cn.itedus.lottery.infrastructure.repository;
 
+import ch.qos.logback.classic.jmx.MBeanUtil;
 import cn.itedus.lottery.domain.strategy.model.aggregates.StrategyRich;
+import cn.itedus.lottery.domain.strategy.model.vo.AwardBriefVO;
+import cn.itedus.lottery.domain.strategy.model.vo.StrategyBriefVO;
+import cn.itedus.lottery.domain.strategy.model.vo.StrategyDetailBriefVO;
 import cn.itedus.lottery.domain.strategy.repository.IStrategyRepository;
 import cn.itedus.lottery.infrastructure.dao.IAwardDao;
 import cn.itedus.lottery.infrastructure.dao.IStrategyDao;
@@ -8,7 +12,10 @@ import cn.itedus.lottery.infrastructure.dao.IStrategyDetailDao;
 import cn.itedus.lottery.infrastructure.po.Award;
 import cn.itedus.lottery.infrastructure.po.Strategy;
 import cn.itedus.lottery.infrastructure.po.StrategyDetail;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
 
@@ -27,12 +34,26 @@ public class StrategyRepository implements IStrategyRepository {
     public StrategyRich queryStrategyRich(Long strategyId){
         Strategy strategy = strategyDao.queryStrategy(strategyId);
         List<StrategyDetail> strategyDetailList=strategyDetailDao.queryStrategyDetailList(strategyId);
-        return new StrategyRich(strategyId,strategy,strategyDetailList);
+
+        StrategyBriefVO strategyBriefVO = new StrategyBriefVO();
+        BeanUtils.copyProperties(strategy, strategyBriefVO);
+
+        List<StrategyDetailBriefVO> strategyDetailBriefVOList = new ArrayList<>();
+        for (StrategyDetail strategyDetail : strategyDetailList) {
+            StrategyDetailBriefVO strategyDetailBriefVO = new StrategyDetailBriefVO();
+            BeanUtils.copyProperties(strategyDetail, strategyDetailBriefVO);
+            strategyDetailBriefVOList.add(strategyDetailBriefVO);
+        }
+
+        return new StrategyRich(strategyId, strategyBriefVO, strategyDetailBriefVOList);
 
     }
     @Override
-    public Award queryAwardinfo(String awardId){
-        return awardDao.queryAwardInfo(awardId);
+    public AwardBriefVO queryAwardinfo(String awardId){
+        Award award= awardDao.queryAwardInfo(awardId);
+        AwardBriefVO awardBriefVO=new AwardBriefVO();
+        BeanUtils.copyProperties(award,awardBriefVO);
+        return awardBriefVO;
     }
     @Override
     public List<String> queryNoStockStrategyAwardList(Long strategyId){

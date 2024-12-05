@@ -19,3 +19,7 @@ https://blog.csdn.net/m0_37822085/article/details/125894706
 
 Error：显示找不到bean
 原因：Goods 没有使用 @Component 注解注册到 bean 中
+
+Activity:
+Error:org.springframework.transaction.CannotCreateTransactionException: Could not open JDBC Connection for transaction; nested exception is java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+原因：从 MySQL 8.0 开始，默认的身份验证插件变更为 caching_sha2_password，这可能导致 JDBC 驱动在尝试连接时需要检索公共密钥：jdbc:mysql://hostname:port/dbname?useSSL=false&allowPublicKeyRetrieval=true

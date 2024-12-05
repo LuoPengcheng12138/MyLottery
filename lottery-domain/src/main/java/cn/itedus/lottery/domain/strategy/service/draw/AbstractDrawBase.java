@@ -4,12 +4,9 @@ import cn.itedus.lottery.common.Constants;
 import cn.itedus.lottery.domain.strategy.model.aggregates.StrategyRich;
 import cn.itedus.lottery.domain.strategy.model.req.DrawReq;
 import cn.itedus.lottery.domain.strategy.model.res.DrawResult;
-import cn.itedus.lottery.domain.strategy.model.vo.AwardRateInfo;
-import cn.itedus.lottery.domain.strategy.model.vo.DrawAwardInfo;
+import cn.itedus.lottery.domain.strategy.model.vo.*;
 import cn.itedus.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
-import cn.itedus.lottery.infrastructure.po.Award;
-import cn.itedus.lottery.infrastructure.po.Strategy;
-import cn.itedus.lottery.infrastructure.po.StrategyDetail;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,8 +22,8 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
 
         //获取抽奖策略配置数据
         StrategyRich strategyRich=super.queryStrategyRich(req.getStrategyId());
-        Strategy strategy=strategyRich.getStrategy();
-        List<StrategyDetail> strategyDetailList=strategyRich.getStrategyDetailList();
+        StrategyBriefVO strategy=strategyRich.getStrategy();
+        List<StrategyDetailBriefVO> strategyDetailList=strategyRich.getStrategyDetailList();
 
         //校验和初始化数据
         this.checkAndInitRateData(req.getStrategyId(),strategy.getStrategyMode(),strategyDetailList);
@@ -52,7 +49,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
 
 
 
-    public void checkAndInitRateData(Long strategyId, Integer strategyMode, List<StrategyDetail> strategyDetailList){
+    public void checkAndInitRateData(Long strategyId, Integer strategyMode, List<StrategyDetailBriefVO> strategyDetailList){
 
         IDrawAlgorithm drawAlgorithm=drawAlgorithmGroup.get(strategyMode);
 
@@ -62,7 +59,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
         }
 
         List<AwardRateInfo> awardRateInfoList=new ArrayList<>(strategyDetailList.size());
-        for(StrategyDetail strategyDetail:strategyDetailList){
+        for(StrategyDetailBriefVO strategyDetail:strategyDetailList){
             awardRateInfoList.add(new AwardRateInfo(strategyDetail.getAwardId(),strategyDetail.getAwardRate()));
         }
 
@@ -79,7 +76,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
             return new DrawResult(uId, strategyId, Constants.DrawState.FAIL.getCode());
         }
 
-        Award award = super.queryAwardInfoByAwardId(awardId);
+        AwardBriefVO award = super.queryAwardInfoByAwardId(awardId);
         DrawAwardInfo drawAwardInfo = new DrawAwardInfo(award.getAwardId(), award.getAwardType(), award.getAwardName(),award.getAwardContent());
         logger.info("执行策略抽奖完成【已中奖】，用户：{} 策略ID：{} 奖品ID：{} 奖品名称：{}", uId, strategyId, awardId, award.getAwardName());
 

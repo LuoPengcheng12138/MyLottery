@@ -15,4 +15,7 @@ public interface IStrategyDetailDao {
     //扣减库存
     int deductStock(StrategyDetail strategyDetailReq);
 
+
+    //插入策略配置组
+    void insertList(List<StrategyDetail> list);
 }

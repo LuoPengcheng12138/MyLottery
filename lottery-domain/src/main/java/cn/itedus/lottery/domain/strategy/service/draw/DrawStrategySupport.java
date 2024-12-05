@@ -1,8 +1,9 @@
 package cn.itedus.lottery.domain.strategy.service.draw;
 
 import cn.itedus.lottery.domain.strategy.model.aggregates.StrategyRich;
+import cn.itedus.lottery.domain.strategy.model.vo.AwardBriefVO;
 import cn.itedus.lottery.domain.strategy.repository.IStrategyRepository;
-import cn.itedus.lottery.infrastructure.po.Award;
+
 
 import javax.annotation.Resource;
 
@@ -20,7 +21,7 @@ public class DrawStrategySupport extends DrawConfig{
         return strategyRepository.queryStrategyRich(strategyId);
     }
     //查询奖品详情信息
-    protected Award queryAwardInfoByAwardId(String awardId){
+    protected AwardBriefVO queryAwardInfoByAwardId(String awardId){
         return strategyRepository.queryAwardinfo(awardId);
     }
 }
