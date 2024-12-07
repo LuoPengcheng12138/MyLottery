@@ -3,6 +3,7 @@ package cn.itedus.lottery.test;
 import cn.itedus.lottery.infrastructure.dao.IActivityDao;
 import cn.itedus.lottery.infrastructure.po.Activity;
 import com.alibaba.fastjson.JSON;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -111,8 +112,13 @@ public class ApiTest {
             System.out.println(random.nextInt(1));
         }
 
-
     }
+    @Test
+    public void test_id() {
+        String random = RandomStringUtils.randomNumeric(9);
+        System.out.println(random);
+    }
+
 
 }
 
