@@ -1,12 +1,38 @@
 server:
   port: 3306
 
-spring:
-  datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3306/lottery?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    driver-class-name: com.mysql.cj.jdbc.Driver
+#spring:
+#  datasource:
+#    username: root
+#    password: 123456
+#    url: jdbc:mysql://localhost:3306/lottery?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mini-db-router:
+  jdbc:
+    datasource:
+      dbCount: 2
+      tbCount: 4
+      default: db00
+      routerKey: uId
+      list: db01,db02
+      db00:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/lottery?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+        username: root
+        password: 123456
+      db01:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/lottery_01?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+        username: root
+        password: 123456
+      db02:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/lottery_02?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+        username: root
+        password: 123456
+
+
 
 mybatis:
   mapper-locations: classpath:/mybatis/mapper/*.xml

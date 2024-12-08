@@ -23,3 +23,13 @@ Error：显示找不到bean
 Activity:
 Error:org.springframework.transaction.CannotCreateTransactionException: Could not open JDBC Connection for transaction; nested exception is java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
 原因：从 MySQL 8.0 开始，默认的身份验证插件变更为 caching_sha2_password，这可能导致 JDBC 驱动在尝试连接时需要检索公共密钥：jdbc:mysql://hostname:port/dbname?useSSL=false&allowPublicKeyRetrieval=true
+
+DRoutor
+Error： mini-db-router:DataSourceBeanCreationException: Failed to determine a suitable driver class
+解决方案：pom.xml加:
+<artifactId>spring-boot-configuration-processor</artifactId>
+<artifactId>spring-boot-autoconfigure</artifactId>
+<artifactId>spring-boot-starter-aop</artifactId>
+
+IUserTakeActivityDao忘记加 @Mapper
+queryUserStrategyExportByuId在Mapper.xml里面也要改函数名
