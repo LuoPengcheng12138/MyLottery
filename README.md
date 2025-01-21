@@ -57,3 +57,7 @@ cd opt/bitnami/kafka/bin/
 删除topic：kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic hello-kafka
 创建生产者: kafka-console-producer.sh --broker-list localhost:9092 --topic Hello-Kafka
 创建消费者: kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic Hello-Kafka --from-beginning
+
+ActivityPartake:
+Error:Error creating bean with name 'cn.itedus.lottery.test.domain.ActivityTest': Injection of resource dependencies failed
+原因： 注入的bean的实现勒上没有@Service注解

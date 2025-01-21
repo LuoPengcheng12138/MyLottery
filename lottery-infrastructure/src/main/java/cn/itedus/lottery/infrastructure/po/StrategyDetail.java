@@ -6,13 +6,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.Date;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 public class StrategyDetail {
     // 自增ID
-    private String id;
+    private Long id;
 
     // 策略ID
     private Long strategyId;
@@ -33,8 +35,8 @@ public class StrategyDetail {
     private BigDecimal awardRate;
 
     // 创建时间
-    private String createTime;
+    private Date createTime;
 
     // 修改时间
-    private String updateTime;
+    private Date updateTime;
 }

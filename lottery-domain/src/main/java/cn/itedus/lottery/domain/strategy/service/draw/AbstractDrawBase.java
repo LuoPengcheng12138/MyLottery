@@ -53,7 +53,8 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
 
         IDrawAlgorithm drawAlgorithm=drawAlgorithmGroup.get(strategyMode);
 
-        boolean isExistRateTuple=drawAlgorithm.isExistRateTuple(strategyId);
+        // 判断已处理过的的数据
+        boolean isExistRateTuple=drawAlgorithm.isExist(strategyId);
         if(isExistRateTuple) {
             return;
         }
@@ -66,7 +67,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
         //DefaultRateRandomDrawAlgorithm不需要初始化元组
         //还是需要初始化，不然会报错
         //if(1!=strategyMode) return;
-        drawAlgorithm.initRateTuple(strategyId, awardRateInfoList);
+        drawAlgorithm.initRateTuple(strategyId,strategyMode, awardRateInfoList);
     }
 
     //包装抽奖结果

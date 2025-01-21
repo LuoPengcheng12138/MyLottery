@@ -12,6 +12,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface IUserTakeActivityDao {
 
-    @DBRouter(key="uId")
+    //@DBRouter(key="uId")
     void insert(UserTakeActivity userTakeActivity);
 }

@@ -1,5 +1,8 @@
 package cn.itedus.lottery.domain.activity.service.partake;
 
+import cn.itedus.lottery.domain.activity.model.req.PartakeReq;
+import cn.itedus.lottery.domain.activity.model.res.PartakeResult;
+
 /**
  * @description:
  * @author：Luopc
@@ -8,8 +11,10 @@ package cn.itedus.lottery.domain.activity.service.partake;
 public interface IActivityPartake {
 
     /**
-     * TODO：待开发活动参与接口
+     * 参与活动
+     * @param   req 入参
+     * @return    领取结果
      */
-    void doPartake();
+    PartakeResult doPartake(PartakeReq req);
 
 }
