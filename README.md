@@ -33,3 +33,27 @@ Error： mini-db-router:DataSourceBeanCreationException: Failed to determine a s
 
 IUserTakeActivityDao忘记加 @Mapper
 queryUserStrategyExportByuId在Mapper.xml里面也要改函数名
+数据库路由有bug，tbIdx要+1
+jar安装到maven方法
+mvn install:install-file -Dfile=/Users/Luopc/Documents/Development/MyJava/db-router-spring-boot-starter/target/db-router-spring-boot-starter-1.0.4.jar -DgroupId=cn.bugstack.middleware -DartifactId=db-router-spring-boot-starter -Dversion=1.0.1-SNAPSHOT -Dpackaging=jar
+
+
+
+消息队列：Kafka3.0不需要zookeeper
+https://blog.csdn.net/qq_30166123/article/details/89705385
+<dependency>
+    <groupId>org.springframework.kafka</groupId>
+    <artifactId>spring-kafka</artifactId>
+    <version>2.8.0</version>
+</dependency>
+
+同一个名字可能是不同的包import的时候注意
+
+Kafka命令：
+docker exec -it kafka /bin/bash
+cd opt/bitnami/kafka/bin/
+查看topic：kafka-topics.sh --bootstrap-server localhost:9092 --describe
+创建topic：kafka-topics.sh --bootstrap-server localhost:9092 --create --partitions 1 --replication-factor 1 --topic hello-kafka
+删除topic：kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic hello-kafka
+创建生产者: kafka-console-producer.sh --broker-list localhost:9092 --topic Hello-Kafka
+创建消费者: kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic Hello-Kafka --from-beginning
