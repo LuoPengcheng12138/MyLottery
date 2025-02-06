@@ -1,6 +1,6 @@
 package cn.itedus.lottery.domain.award.service.goods;
 
-import cn.itedus.lottery.domain.award.repository.IAwardRepository;
+import cn.itedus.lottery.domain.award.repository.IOrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +16,7 @@ public class DistributionBase {
     protected Logger logger= LoggerFactory.getLogger(DistributionBase.class);
 
     @Resource
-    private IAwardRepository awardRepository;
+    private IOrderRepository awardRepository;
 
     protected void updateUserAwardState(String uId,String orderId,String awardId,Integer awardState,String awardStateInfo){
         //TODO 后期添加：更新分库分表的用户个人的抽奖记录表中的奖品发奖状态

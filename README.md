@@ -61,3 +61,4 @@ cd opt/bitnami/kafka/bin/
 ActivityPartake:
 Error:Error creating bean with name 'cn.itedus.lottery.test.domain.ActivityTest': Injection of resource dependencies failed
 原因： 注入的bean的实现勒上没有@Service注解
+
